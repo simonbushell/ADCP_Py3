@@ -1,1 +1,16 @@
 tmp_*/
+rigidReceptor.A.map
+rigidReceptor.C.map
+rigidReceptor.HD.map
+rigidReceptor.N.map
+rigidReceptor.NA.map
+rigidReceptor.OA.map
+rigidReceptor.SA.map
+rigidReceptor.d.map
+rigidReceptor.e.map
+translationPoints.npy
+transpoints
+.venv/
+.vscode/
+config.txt
+*.trg

@@ -187,7 +187,7 @@ class runADCP:
                         "WARNING: cannot locate map file rigidReceptor.%s.map" % element
                     )
 
-        with open("con", "w+") as fff:
+        with open("config.txt", "w+") as fff:
             fff.write("1\n")
 
         # check overwriting files
@@ -223,7 +223,7 @@ class runADCP:
         argv.append("1x%s" % numSteps)
 
         # set up other options for ADCP
-        ADCPDefaultOptions = "-p Bias=NULL,external=5,con,1.0,1.0"
+        ADCPDefaultOptions = "-p Bias=NULL,external=5,config.txt,1.0,1.0"
         if kw["cyclic"]:
             ADCPDefaultOptions += ",external2=4,con14,1.0,1.0"
         if kw["cystein"]:
@@ -266,7 +266,12 @@ class runADCP:
                 print(" ".join(argv))
                 print()
                 self.myexit()
-
+            
+            # Add these lines before the subprocess.Popen call (around line 269)
+            #print("Current working directory:", os.getcwd())
+            #print("Executing command:", " ".join(argv))
+            
+            # This is where the ADCP command is run
             process = subprocess.Popen(
                 " ".join(argv),
                 stdout=subprocess.PIPE,
@@ -430,7 +435,8 @@ if __name__ == "__main__":
         default=-1,
         help="seed for random number generator",
     )
-    kw = vars(parser.parse_args())
+    #kw = vars(parser.parse_args())
+    kw = {'sequence': 'CAYYEYSNEIYESC', 'input': None, 'numSteps': 500000, 'cyclic': False, 'cystein': True, 'overwriteFiles': False}
 
     runner = runADCP()
     runner(**kw)
