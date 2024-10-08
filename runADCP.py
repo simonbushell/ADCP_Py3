@@ -19,6 +19,7 @@
 ################################################################################
 
 import datetime
+
 #############################################################################
 #
 # Author: Michel F. SANNER
@@ -265,11 +266,11 @@ class runADCP:
                 print(" ".join(argv))
                 print()
                 self.myexit()
-            
+
             # Add these lines before the subprocess.Popen call (around line 269)
-            #print("Current working directory:", os.getcwd())
-            #print("Executing command:", " ".join(argv))
-            
+            # print("Current working directory:", os.getcwd())
+            # print("Executing command:", " ".join(argv))
+
             # This is where the ADCP command is run
             process = subprocess.Popen(
                 " ".join(argv),
@@ -434,8 +435,7 @@ if __name__ == "__main__":
         default=-1,
         help="seed for random number generator",
     )
-    #kw = vars(parser.parse_args())
-    kw = {'sequence': 'CAYYEYSNEIYESC', 'input': None, 'numSteps': 500000, 'cyclic': False, 'cystein': True, 'overwriteFiles': False}
+    kw = vars(parser.parse_args())
 
     runner = runADCP()
     runner(**kw)
