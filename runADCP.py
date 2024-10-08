@@ -353,6 +353,25 @@ class runADCP:
         self.myexit()
 
 
+def sort_pdb(input_file, output_file):
+    """
+    PDB outputs from ADCP are corrupted as side chain atom positions are
+    listed before backbone atoms which impacts the presentation of their
+    structures in programs suchs as ChimeraX, this function will repair the
+    PDB files generated this way
+    """
+
+    with open(input_file, "r") as infile:
+        pdb_lines = [line for line in infile if line.startswith("ATOM")]
+
+    pdb_lines.sort(key=lambda line: int(line[22:26].strip()))
+
+    with open(output_file, "w") as outfile:
+        outfile.writelines(pdb_lines)
+
+    # print(f"Sorted PDB file saved as '{output_file}'.")
+
+
 if __name__ == "__main__":
     # from ADFR.utils.runADFR import runADFR
     # from ADFR.utils.optParser import ArgParser
