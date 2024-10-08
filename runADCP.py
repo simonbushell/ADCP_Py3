@@ -356,8 +356,6 @@ class runADCP:
             )
         self.myexit()
 
-
-<<<<<<< HEAD
 def sort_pdb(input_file, output_file):
     """
     PDB outputs from ADCP are corrupted as side chain atom positions are
@@ -377,7 +375,10 @@ def sort_pdb(input_file, output_file):
     # print(f"Sorted PDB file saved as '{output_file}'.")
 
 
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 38e83d8 (added PDB repair function)
 if __name__ == "__main__":
     # from ADFR.utils.runADFR import runADFR
     # from ADFR.utils.optParser import ArgParser
