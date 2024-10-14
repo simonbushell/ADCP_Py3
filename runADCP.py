@@ -436,8 +436,8 @@ if __name__ == "__main__":
         default=-1,
         help="seed for random number generator",
     )
-    # kw = vars(parser.parse_args())
-    from testenv import kw
+    kw = vars(parser.parse_args())
+    # from testenv import kw
 
     runner = runADCP()
     runner(**kw)
