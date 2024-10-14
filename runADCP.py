@@ -275,7 +275,7 @@ class runADCP:
                 " ".join(argv),
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                bufsize=1,
+                # bufsize=1,
                 shell=self.shell,
                 cwd=os.getcwd(),
             )
@@ -284,7 +284,9 @@ class runADCP:
 
         # check for completion and start new runs ntil we are done
         while nbDone < nbRuns:
-            for proc, jnum in procToRun.items():
+            # for proc, jnum in procToRun.items():
+            for proc in list(procToRun.keys()):
+                jnum = procToRun[proc]
                 if proc.poll() is not None:
                     if proc.returncode != 0:
                         runStatus[jnum] = ("Error", "%s%04d" % (jobName, jnum + 1))
@@ -327,7 +329,7 @@ class runADCP:
                             " ".join(argv),
                             stdout=subprocess.PIPE,
                             stderr=subprocess.PIPE,
-                            bufsize=1,
+                            # bufsize=1,
                             shell=self.shell,
                             cwd=os.getcwd(),
                         )

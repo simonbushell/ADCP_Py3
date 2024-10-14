@@ -1,4 +1,6 @@
 tmp_*/
+__pycache__/
+*.pdb
 rigidReceptor.A.map
 rigidReceptor.C.map
 rigidReceptor.HD.map
@@ -14,3 +16,4 @@ transpoints
 .vscode/
 config.txt
 *.trg
+uv.lock
