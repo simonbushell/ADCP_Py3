@@ -19,7 +19,6 @@
 ################################################################################
 
 import datetime
-
 #############################################################################
 #
 # Author: Michel F. SANNER
@@ -114,7 +113,7 @@ class runADCP:
 
         skip = False
 
-        rncpu = kw.pop("maxCores")
+        rncpu = kw.pop("maxCores", None)
 
         if rncpu is None:
             ncores = self.ncpu
@@ -435,7 +434,8 @@ if __name__ == "__main__":
         default=-1,
         help="seed for random number generator",
     )
-    kw = vars(parser.parse_args())
+    # kw = vars(parser.parse_args())
+    from testenv import kw
 
     runner = runADCP()
     runner(**kw)
